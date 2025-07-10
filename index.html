@@ -1199,10 +1199,11 @@ img {
                         </div>
                     </div>
                   <form 
-  action="https://formsubmit.co/mishraaman8213@gmail.com" 
+  action="https://formsubmit.co/el/mishraaman8213@gmail.com" 
   method="POST"
   class="contact-form"
 >
+  <!-- Your existing form fields -->
   <div class="form-group">
     <input type="text" name="name" placeholder="Your Name" required>
   </div>
@@ -1212,6 +1213,11 @@ img {
   <div class="form-group">
     <textarea name="message" placeholder="Your Message" required></textarea>
   </div>
+  
+  <!-- Add these hidden fields -->
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_next" value="https://your-resume.vercel.app/thank-you.html">
+  
   <button type="submit" class="btn btn-primary">Send Message</button>
 </form>
                 </div>
