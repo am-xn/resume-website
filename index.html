@@ -1198,18 +1198,22 @@ img {
                             <span>Mumbai, India</span>
                         </div>
                     </div>
-                    <form 
-  action="https://formsubmit.co/mishraaman8213@gmail.com" 
-  method="POST"
->
-  <input type="text" name="name" placeholder="Your Name" required>
-  <input type="email" name="email" placeholder="Your Email" required>
-  <input type="text" name="_subject" value="New message from your resume site!" hidden>
-  <textarea name="message" placeholder="Your Message" required></textarea>
-  <button type="submit">Send Message</button>
-  
-  <!-- Optional: Remove this line if you don’t want a thank-you page -->
-  <input type="hidden" name="_next" value="https://aman-mishra-resume.vercel.app/thank-you.html">
+                  <form class="contact-form" id="contact-form" 
+      action="https://formsubmit.co/mishraaman8213@gmail.com" 
+      method="POST">
+  <div class="form-group">
+    <input type="text" name="name" placeholder="Your Name" required>
+  </div>
+  <div class="form-group">
+    <input type="email" name="email" placeholder="Your Email" required>
+  </div>
+  <div class="form-group">
+    <input type="text" name="_subject" value="New message from your resume site!" hidden>
+  </div>
+  <div class="form-group">
+    <textarea name="message" placeholder="Your Message" required></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Send Message</button>
 </form>
                 </div>
             </div>
