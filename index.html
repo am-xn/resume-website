@@ -1198,12 +1198,13 @@ img {
                             <span>Mumbai, India</span>
                         </div>
                     </div>
-                  <form 
+                 <!-- UPDATED FORM CODE (PASTE THIS) -->
+<form 
   action="https://formsubmit.co/el/mishraaman8213@gmail.com" 
   method="POST"
   class="contact-form"
 >
-  <!-- Your existing form fields -->
+  <!-- Required Fields -->
   <div class="form-group">
     <input type="text" name="name" placeholder="Your Name" required>
   </div>
@@ -1213,10 +1214,12 @@ img {
   <div class="form-group">
     <textarea name="message" placeholder="Your Message" required></textarea>
   </div>
-  
-  <!-- Add these hidden fields -->
+
+  <!-- Critical Hidden Fields -->
   <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_next" value="https://your-resume.vercel.app/thank-you.html">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_autoresponse" value="Thank you! I've received your message and will reply soon.">
+  <input type="hidden" name="_next" value="https://your-resume-url.vercel.app/thank-you.html">
   
   <button type="submit" class="btn btn-primary">Send Message</button>
 </form>
