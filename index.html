@@ -1208,18 +1208,19 @@ img {
     <i class="fas fa-check-circle"></i> Message sent successfully! I'll respond within 24 hours.
   </div>
 
-  <!-- Contact Form (Web3Forms) -->
-  <form 
-    id="resume-contact-form"
-    action="https://api.web3forms.com/submit"
-    method="POST"
-    class="contact-form"
-  >
-    <!-- Web3Forms Setup -->
+  <!-- COMPLETE CONTACT FORM WITH DEBUGGING -->
+<div class="contact-section">
+  <h2>Contact Me</h2>
+
+  <!-- Real-time Status Alerts -->
+  <div id="form-alert" style="display:none; padding:15px; border-radius:5px; margin:15px 0;"></div>
+
+  <!-- Foolproof Form -->
+  <form id="absolute-contact-form">
+    <!-- Web3Forms (register at web3forms.com - FREE) -->
     <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY">
-    <input type="hidden" name="redirect" value="https://your-resume.vercel.app/thank-you.html">
     
-    <!-- Form Fields -->
+    <!-- Required Fields -->
     <div class="form-group">
       <input type="text" name="name" placeholder="Your Name" required>
     </div>
@@ -1229,57 +1230,69 @@ img {
     <div class="form-group">
       <textarea name="message" placeholder="Your Message" required></textarea>
     </div>
-    
-    <button type="submit" class="btn btn-primary" id="submit-btn">
-      <span id="submit-text">Send Message</span>
-      <span id="submit-spinner" style="display:none;">
-        <i class="fas fa-spinner fa-spin"></i> Sending...
+
+    <button type="submit" class="btn btn-primary" id="form-submit-btn">
+      <span id="btn-text">Send Message</span>
+      <span id="btn-spinner" style="display:none;">
+        <i class="fas fa-spinner fa-spin"></i>
       </span>
     </button>
   </form>
 
-  <!-- JavaScript (Embedded Directly in HTML) -->
+  <!-- Embedded JavaScript with Debugging -->
   <script>
-    document.getElementById("resume-contact-form").addEventListener("submit", async function(e) {
+    const form = document.getElementById("absolute-contact-form");
+    const alertBox = document.getElementById("form-alert");
+    const submitBtn = document.getElementById("form-submit-btn");
+
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const form = e.target;
-      const submitBtn = document.getElementById("submit-btn");
-      const statusEl = document.getElementById("form-status");
       
       // Show loading state
-      document.getElementById("submit-text").style.display = "none";
-      document.getElementById("submit-spinner").style.display = "inline-block";
+      document.getElementById("btn-text").style.display = "none";
+      document.getElementById("btn-spinner").style.display = "inline-block";
       submitBtn.disabled = true;
-      
+      alertBox.style.display = "none";
+
       try {
-        const response = await fetch(form.action, {
+        // Debugging Point 1: Verify form data
+        const formData = new FormData(form);
+        console.log("Form Data:", Object.fromEntries(formData.entries()));
+
+        const response = await fetch("https://api.web3forms.com/submit", {
           method: "POST",
-          body: new FormData(form)
+          body: formData
         });
+
+        // Debugging Point 2: Check API response
         const result = await response.json();
-        
+        console.log("API Response:", result);
+
         if (result.success) {
-          // Show success message
-          statusEl.style.display = "block";
+          showAlert("Message sent successfully!", "success");
           form.reset();
-          
-          // Hide message after 5 seconds
-          setTimeout(() => {
-            statusEl.style.display = "none";
-          }, 5000);
+        } else {
+          showAlert(`Error: ${result.message || "Failed to send message"}`, "error");
         }
       } catch (error) {
-        statusEl.innerHTML = '<i class="fas fa-times-circle"></i> Error! Please email me directly at mishraaman8213@gmail.com';
-        statusEl.style.backgroundColor = "#f44336";
-        statusEl.style.display = "block";
+        // Debugging Point 3: Network errors
+        console.error("Submission error:", error);
+        showAlert(`Network error: ${error.message}`, "error");
       } finally {
-        // Reset button
-        document.getElementById("submit-text").style.display = "inline-block";
-        document.getElementById("submit-spinner").style.display = "none";
+        document.getElementById("btn-text").style.display = "inline-block";
+        document.getElementById("btn-spinner").style.display = "none";
         submitBtn.disabled = false;
       }
     });
+
+    function showAlert(message, type) {
+      alertBox.textContent = message;
+      alertBox.style.display = "block";
+      alertBox.style.background = type === "success" ? "#4CAF50" : "#f44336";
+      alertBox.style.color = "white";
+    }
   </script>
+</div>
 </div>
 
 
