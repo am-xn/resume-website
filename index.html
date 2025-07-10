@@ -1215,29 +1215,25 @@ img {
   <!-- Real-time Status Alerts -->
   <div id="form-alert" style="display:none; padding:15px; border-radius:5px; margin:15px 0;"></div>
 
-  <!-- Foolproof Form -->
-  <form id="absolute-contact-form">
-    <!-- Web3Forms (register at web3forms.com - FREE) -->
-    <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY">
-    
-    <!-- Required Fields -->
-    <div class="form-group">
-      <input type="text" name="name" placeholder="Your Name" required>
-    </div>
-    <div class="form-group">
-      <input type="email" name="email" placeholder="Your Email" required>
-    </div>
-    <div class="form-group">
-      <textarea name="message" placeholder="Your Message" required></textarea>
-    </div>
-
-    <button type="submit" class="btn btn-primary" id="form-submit-btn">
-      <span id="btn-text">Send Message</span>
-      <span id="btn-spinner" style="display:none;">
-        <i class="fas fa-spinner fa-spin"></i>
-      </span>
-    </button>
-  </form>
+ <form 
+  action="https://formsubmit.co/mishraaman8213@gmail.com" 
+  method="POST"
+  class="contact-form"
+>
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_template" value="basic">
+  
+  <div class="form-group">
+    <input type="text" name="name" placeholder="Your Name" required>
+  </div>
+  <div class="form-group">
+    <input type="email" name="email" placeholder="Your Email" required>
+  </div>
+  <div class="form-group">
+    <textarea name="message" placeholder="Your Message" required></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Send Message</button>
+</form>
 
   <!-- Embedded JavaScript with Debugging -->
   <script>
